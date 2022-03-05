@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <button className='enterBtn' onClick={onClick}>
-        Enter to TubbiesVerse
+        Enter TubbiesVerse
       </button>
     </div>
   );
