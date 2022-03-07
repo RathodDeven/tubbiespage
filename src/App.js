@@ -3,19 +3,22 @@ import './App.css';
 
 function App() {
   const [rooms,setRooms] = useState([]);
+  const [loading,setLoading] = useState(false)
 
   useEffect(() => {
     const foo = async() => {
       try{
+        setLoading(true);
       const data = await fetch("https://interality.io/api/v1/media/search?source=rooms&filter=public&cursor=0",{
         headers: {"content-type": "application/json"},
         method: "GET"
       }).then(r => r.json());
-      console.log("publicRooms from reticulum",data.entries);
-
+      console.log("publicRooms",data.entries);
+      setLoading(false);
       setRooms(data.entries);
       }catch(e){
         console.log(e);
+        setLoading(false);
       }
     }
     foo();
@@ -24,7 +27,7 @@ function App() {
   const availableRoom = () => {
     console.log("all ROOms",rooms);
     if(rooms.length === 0){
-      window.location.href = "https://interality.io/HFwSvX9/tubbieverse";
+      window.location.href = "https://interality.io/c7Bh9xM/tubbieverse";
       return;
     }
     for (let i = 0; i < rooms.length; i++) {
@@ -55,9 +58,10 @@ function App() {
   // }
   return (
     <div className="App">
-      <button className='enterBtn' onClick={availableRoom}>
+      {loading && <button className='enterBtn' disabled>loading...</button>}
+      {!loading && <button className='enterBtn' onClick={availableRoom}>
         Enter TubbieVerse
-      </button>
+      </button>}
     </div>
   );
 }
