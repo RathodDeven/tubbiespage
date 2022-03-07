@@ -32,6 +32,7 @@ function App() {
       if((room.lobby_count + room.member_count) < 60){
             console.log("selected room ",room.url)
             window.location.href = room.url;
+            return;
             // return room.url;
       }
     } 
