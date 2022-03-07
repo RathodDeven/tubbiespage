@@ -42,7 +42,7 @@ function App() {
   const onClick = async () => {
     const roomLink = availableRoom();
     console.log("roomLink",roomLink);
-    // window.location.href = roomLink;
+    window.location.href = roomLink;
     // window.location.href = "https://interality.io/HFwSvX9/tubbieverse";
   }
   return (
