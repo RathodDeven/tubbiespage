@@ -20,6 +20,7 @@ function App() {
   const availableRoom = () => {
     console.log("all ROOms",rooms);
     if(rooms.length === 0){
+      window.location.href = "https://interality.io/HFwSvX9/tubbieverse";
       return;
     }
     for (let i = 0; i < rooms.length; i++) {
