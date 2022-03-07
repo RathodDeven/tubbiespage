@@ -6,6 +6,7 @@ function App() {
 
   useEffect(() => {
     const foo = async() => {
+      try{
       const data = await fetch("https://interality.io/api/v1/media/search?source=rooms&filter=public&cursor=0",{
         headers: {"content-type": "application/json"},
         method: "GET"
@@ -13,6 +14,9 @@ function App() {
       console.log("publicRooms from reticulum",data.entries);
 
       setRooms(data.entries);
+      }catch(e){
+        console.log(e);
+      }
     }
     foo();
   },[])
